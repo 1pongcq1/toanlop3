@@ -1,43 +1,40 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Học Bảng Cửu Chương</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Học Bảng Cửu Chương</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Học Bảng Cửu Chương</h1>
-    </header>
+  <header>
+    <h1>Học Bảng Cửu Chương</h1>
+  </header>
 
-    <div class="content">
-        <h2>Chọn bảng cửu chương bạn muốn học:</h2>
-        <select id="tableSelect">
-            <option value="1">Bảng 1</option>
-            <option value="2">Bảng 2</option>
-            <option value="3">Bảng 3</option>
-            <option value="4">Bảng 4</option>
-            <option value="5">Bảng 5</option>
-            <option value="6">Bảng 6</option>
-            <option value="7">Bảng 7</option>
-            <option value="8">Bảng 8</option>
-            <option value="9">Bảng 9</option>
-        </select>
-        <button onclick="startQuiz()">Bắt đầu học</button>
+  <main>
+    <div class="chon-bang">
+      <h2>Chọn bảng cửu chương bạn muốn học:</h2>
+      <select id="bang">
+        <option value="2">Bảng 2</option>
+        <option value="3">Bảng 3</option>
+        <option value="4">Bảng 4</option>
+        <option value="5">Bảng 5</option>
+        <option value="6">Bảng 6</option>
+        <option value="7">Bảng 7</option>
+        <option value="8">Bảng 8</option>
+        <option value="9">Bảng 9</option>
+      </select>
+      <button onclick="batDau()">Bắt đầu học</button>
     </div>
 
-    <div id="quizContainer" style="display: none;">
-        <h2>Bài tập:</h2>
-        <div id="quiz"></div>
-        <button onclick="checkAnswers()">Kiểm tra</button>
+    <div class="bai-tap" id="bai-tap" style="display: none;">
+      <h2>Bài tập:</h2>
+      <div id="cau-hoi"></div>
+      <button onclick="kiemTraKetQua()">Kiểm tra</button>
     </div>
 
-    <div id="resultContainer" style="display: none;">
-        <h2>Kết quả</h2>
-        <div id="result"></div>
-    </div>
+    <div class="ket-qua" id="ket-qua"></div>
+  </main>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

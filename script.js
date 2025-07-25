@@ -1,33 +1,44 @@
-function startQuiz() {
-    let table = document.getElementById("tableSelect").value;
-    document.getElementById("quizContainer").style.display = "block";
-    let quiz = document.getElementById("quiz");
-    quiz.innerHTML = "";
+function batDau() {
+  const bang = parseInt(document.getElementById("bang").value);
+  const cauHoiDiv = document.getElementById("cau-hoi");
+  cauHoiDiv.innerHTML = "";
 
-    for (let i = 1; i <= 10; i++) {
-        let question = document.createElement("div");
-        question.innerHTML = `
-            <label for="q${i}">${table} x ${i} = </label>
-            <input type="number" id="q${i}" />
-        `;
-        quiz.appendChild(question);
-    }
+  for (let i = 1; i <= 10; i++) {
+    const row = document.createElement("div");
+    row.innerHTML = `
+      ${bang} x ${i} = <input type="number" id="answer-${i}" />
+    `;
+    cauHoiDiv.appendChild(row);
+  }
+
+  document.getElementById("bai-tap").style.display = "block";
+  document.getElementById("ket-qua").innerHTML = "";
 }
 
-function checkAnswers() {
-    let table = document.getElementById("tableSelect").value;
-    let correct = 0;
+function kiemTraKetQua() {
+  let dung = 0;
+  const ketQuaDiv = document.getElementById("ket-qua");
+  ketQuaDiv.innerHTML = "";
+  const bang = parseInt(document.getElementById("bang").value);
 
-    for (let i = 1; i <= 10; i++) {
-        let userAnswer = document.getElementById(`q${i}`).value;
-        let correctAnswer = table * i;
-        
-        if (parseInt(userAnswer) === correctAnswer) {
-            correct++;
-        }
+  for (let i = 1; i <= 10; i++) {
+    const input = document.getElementById(`answer-${i}`);
+    const dapAn = parseInt(input.value);
+    const dungSo = bang * i;
+
+    const resultLine = document.createElement("p");
+    if (dapAn === dungSo) {
+      resultLine.innerHTML = `✅ ${bang} x ${i} = ${dapAn} (Đúng)`;
+      resultLine.style.color = "green";
+      dung++;
+    } else {
+      resultLine.innerHTML = `❌ ${bang} x ${i} = ${dapAn || "?"} (Sai, đúng là ${dungSo})`;
+      resultLine.style.color = "red";
     }
+    ketQuaDiv.appendChild(resultLine);
+  }
 
-    document.getElementById("quizContainer").style.display = "none";
-    document.getElementById("resultContainer").style.display = "block";
-    document.getElementById("result").innerHTML = `Bạn đúng ${correct}/10 câu hỏi.`;
+  const tongKet = document.createElement("h3");
+  tongKet.textContent = `🎯 Bạn đúng ${dung}/10 câu.`;
+  ketQuaDiv.appendChild(tongKet);
 }
